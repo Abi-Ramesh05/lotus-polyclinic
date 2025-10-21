@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus Polyclinic | Compassionate Healthcare for All</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <meta name="theme-color" content="#0D3B66">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BRAND COLOR VARIABLES ===== */
+        :root {
+            --deep-blue: #0D3B66;
+            --healing-sky: #4A90E2;
+            --gentle-pink: #E8A3B9;
+            --care-blossom: #F5CEDD;
+            --mist-blue: #A9C6EB;
+            --rose-glow: #F8DFE7;
+            --graphite-gray: #4A4F57;
+            --pure-white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --shadow: 0 8px 32px rgba(13, 59, 102, 0.1);
+            --shadow-hover: 0 16px 48px rgba(13, 59, 102, 0.15);
+            --glass-shadow: 0 8px 32px rgba(13, 59, 102, 0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--graphite-gray);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow-x: hidden;
+        }
+
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(169, 198, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(248, 223, 231, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        .emergency-banner {
+            background: var(--deep-blue);
+            color: var(--pure-white);
+            padding: 0.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .emergency-banner i {
+            margin-right: 0.5rem;
+            color: var(--gentle-pink);
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--glass-shadow);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding: 8px 0;
+            text-decoration: none;
+            color: var(--graphite-gray);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--gentle-pink), var(--healing-sky));
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            cursor: pointer;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--healing-sky) 100%);
+            color: var(--pure-white);
+            padding: 14rem 0 8rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(232, 163, 185, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(74, 144, 226, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .clinic-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8dfe7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        
+        .hero-tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Lora', serif;
+            font-style: italic;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .hero-btns .btn {
+            padding: 16px 36px;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: var(--transition-slow);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gentle-pink), var(--healing-sky));
+            color: var(--pure-white);
+            box-shadow: 0 8px 25px rgba(232, 163, 185, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(232, 163, 185, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--pure-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .btn-light {
+            background-color: var(--pure-white);
+            color: var(--deep-blue);
+        }
+        
+        .btn-light:hover {
+            background-color: var(--care-blossom);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* ===== STATS SECTION ===== */
+        .stats {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--healing-sky) 100%);
+            color: var(--pure-white);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(232, 163, 185, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--pure-white);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-item p {
+            color: var(--mist-blue);
+            font-weight: 500;
+        }
+        
+        /* ===== CONTAINER & SECTION STYLES ===== */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section-padding {
+            padding: 6rem 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--deep-blue), var(--gentle-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--gentle-pink), var(--healing-sky));
+            border-radius: 2px;
+            margin: 0.5rem auto 0;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--graphite-gray);
+            font-size: 1.1rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(233, 236, 239, 0.9) 100%);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(169, 198, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(248, 223, 231, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-text > p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--gentle-pink), var(--healing-sky));
+        }
+
+        .value-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: var(--transition-slow);
+        }
+
+        .value-item:hover::after {
+            left: 100%;
+        }
+
+        .value-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(232, 163, 185, 0.3);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--healing-sky), var(--gentle-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--pure-white);
+            font-size: 1.8rem;
+        }
+
+        .value-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .value-item p {
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* ===== VISION MISSION SECTION ===== */
+        .vision-mission {
+            background: linear-gradient(135deg, rgba(248, 223, 231, 0.3) 0%, rgba(169, 198, 235, 0.3) 100%);
+            position: relative;
+        }
+
+        .vision-mission::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(232, 163, 185, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .vm-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .vm-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gentle-pink), var(--healing-sky));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: var(--pure-white);
+            font-size: 1.8rem;
+        }
+
+        .vm-content h3 {
+            margin-bottom: 1.5rem;
+            color: var(--deep-blue);
+            font-size: 1.8rem;
+        }
+
+        .vm-section {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .vm-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .vm-section h4 {
+            color: var(--gentle-pink);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .vm-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .vm-section ul {
+            padding-left: 1.5rem;
+            text-align: left;
+        }
+
+        .vm-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        /* ===== FACILITIES SECTION ===== */
+        .facilities {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(233, 236, 239, 0.9) 100%);
+            position: relative;
+        }
+
+        .facilities::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(169, 198, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(248, 223, 231, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .facility-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .facility-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--gentle-pink), var(--healing-sky));
+        }
+        
+        .facility-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: var(--transition-slow);
+        }
+        
+        .facility-card:hover::after {
+            left: 100%;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(232, 163, 185, 0.3);
+        }
+        
+        .facility-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--healing-sky), var(--gentle-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--pure-white);
+            font-size: 1.8rem;
+        }
+        
+        .facility-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        /* ===== DOCTORS SECTION ===== */
+        .doctors {
+            background: linear-gradient(135deg, rgba(248, 223, 231, 0.3) 0%, rgba(169, 198, 235, 0.3) 100%);
+            position: relative;
+        }
+
+        .doctors::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(232, 163, 185, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .doctor-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: var(--transition-slow);
+        }
+        
+        .doctor-card:hover::before {
+            left: 100%;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(232, 163, 185, 0.3);
+        }
+        
+        .doctor-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--healing-sky), var(--care-blossom));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--pure-white);
+            font-size: 2rem;
+        }
+        
+        .doctor-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .doctor-specialty {
+            color: var(--gentle-pink);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .doctor-bio {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* ===== BLOGS SECTION ===== */
+        .blogs {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(233, 236, 239, 0.9) 100%);
+            position: relative;
+        }
+
+        .blogs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 60% 40%, rgba(169, 198, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(248, 223, 231, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 2rem;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .blog-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--healing-sky), var(--care-blossom));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--pure-white);
+            font-size: 1.5rem;
+        }
+        
+        .blog-date {
+            color: var(--gentle-pink);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            background: linear-gradient(135deg, rgba(248, 223, 231, 0.4) 0%, rgba(245, 206, 221, 0.4) 100%);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 90%, rgba(232, 163, 185, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 90% 10%, rgba(169, 198, 235, 0.2) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--gentle-pink);
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -10px;
+            left: -10px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -20px;
+            right: -10px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--deep-blue);
+            font-size: 1rem;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--healing-sky) 100%);
+            color: var(--pure-white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(232, 163, 185, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(169, 198, 235, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .contact .section-title h2 {
+            color: var(--pure-white);
+            background: linear-gradient(135deg, var(--pure-white), var(--care-blossom));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact .section-title p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact .section-title h2::after {
+            background: linear-gradient(to right, var(--care-blossom), var(--pure-white));
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gentle-pink), var(--healing-sky));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-details h3 {
+            color: var(--pure-white);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-details p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .contact-form h3 {
+            color: var(--deep-blue);
+            text-align: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: var(--deep-blue);
+            font-size: 0.95rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--mist-blue);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            color: var(--graphite-gray);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gentle-pink);
+            box-shadow: 0 0 0 3px rgba(232, 163, 185, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(74, 79, 87, 0.6);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* ===== MESSAGE US SECTION ===== */
+        .message-us {
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(233, 236, 239, 0.9) 100%);
+            position: relative;
+        }
+
+        .message-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 75%, rgba(169, 198, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(248, 223, 231, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .message-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* ===== FEEDBACK SECTION ===== */
+        .feedback {
+            background: linear-gradient(135deg, rgba(248, 223, 231, 0.3) 0%, rgba(169, 198, 235, 0.3) 100%);
+            position: relative;
+        }
+
+        .feedback::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 40% 40%, rgba(232, 163, 185, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 60% 60%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .feedback-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* ===== MAP SECTION ===== */
+        .map-container {
+            margin-top: 2rem;
+        }
+        
+        .map-container h3 {
+            color: var(--pure-white);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .map-placeholder {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .map-content p {
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, #0a2d4d 100%);
+            color: var(--pure-white);
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: start;
+        }
+        
+        .footer-logo-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .footer-logo {
+    max-width: 200px; /* Won't exceed this width */
+    height: auto;
+    width: 100%; /* Scales down if container is smaller */
+}
+        
+        .footer-col h3 {
+            color: var(--pure-white);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-col p {
+            color: var(--mist-blue);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+        }
+        
+        .footer-col ul li a {
+            color: var(--mist-blue);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--care-blossom);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--pure-white);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gentle-pink);
+            transform: translateY(-2px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--mist-blue);
+        }
+        
+        /* ===== WHATSAPP FLOATING BUTTON ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background-color: #25D366;
+            color: var(--pure-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes pulse {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            50% { 
+                transform: scale(1.05);
+            }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* ===== APPOINTMENT MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1100;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--graphite-gray);
+        }
+        
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--pure-white) 0%, var(--rose-glow) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: -5px 0 12px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition-slow);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-close {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--deep-blue);
+            cursor: pointer;
+        }
+        
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .mobile-nav-links a {
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(13, 59, 102, 0.1);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--graphite-gray);
+            text-transform: uppercase;
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--gentle-pink);
+            padding-left: 8px;
+        }
+        
+        .mobile-nav-cta {
+            margin-top: auto;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .clinic-name {
+                font-size: 3.5rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 0;
+            }
+            
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 12rem 0 6rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-padding {
+                padding: 4rem 0;
+            }
+            
+            .contact-container {
+                gap: 2rem;
+            }
+            
+            .footer-content {
+                gap: 1.5rem;
+                grid-template-columns: 1fr;
+            }
+            
+            .clinic-name {
+                font-size: 3rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .clinic-name {
+                font-size: 2.5rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="container">
+            <i class="fas fa-phone-alt"></i> Emergency Line: 0820-XXXXXXX | Open 7 Days a Week: 7:00 AM - 7:30 PM
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo">
+                    <img src="images/logo.png" alt="Lotus Polyclinic Logo" class="logo-image">
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#about">ABOUT US</a></li>
+                    <li><a href="#facilities">FACILITIES</a></li>
+                    <li><a href="#blogs">BLOGS</a></li>
+                    <li><a href="#testimonials">TESTIMONIALS</a></li>
+                    <li><a href="#contact">CONTACT US</a></li>
+                </ul>
+                
+                <div class="nav-cta">
+                    <a href="#contact" class="btn btn-primary">Book Appointment</a>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-nav-links">
+            <a href="#about">ABOUT US</a>
+            <a href="#facilities">FACILITIES</a>
+            <a href="#blogs">BLOGS</a>
+            <a href="#testimonials">TESTIMONIALS</a>
+            <a href="#contact">CONTACT US</a>
+        </div>
+        <div class="mobile-nav-cta">
+            <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Book Appointment</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="clinic-name">Lotus Polyclinic</h1>
+                <p class="hero-tagline">"Caring beyond treatment" – Lotus polyclinic is a comprehensive health care provider committed to deliver compassionate, personalized and evidence based medical care.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary floating">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <i class="fas fa-play-circle"></i> Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Years of Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>Patients Treated</p>
+                </div>
+                <div class="stat-item">
+                    <h3>6+</h3>
+                    <p>Medical Specialties</p>
+                </div>
+                <div class="stat-item">
+                    <h3>7 Days</h3>
+                    <p>Open Every Week</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - 4 BOXES IN ONE ROW -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Lotus Polyclinic</h2>
+                    <p>Lotus Polyclinic, at Ponmar, Chennai, built upon the foundation of Sri Sai Clinic, established in 2020, with a vision to provide quality and affordable healthcare to the community. Guided by compassion and commitment, we have grown into a multi-specialty clinic dedicated to patient-centered care.</p>
+                    <p>At Lotus Polyclinic, we strive to combine medical expertise with empathy, ensuring that every individual receives comprehensive, evidence-based, and personalized treatment.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Compassion</h3>
+                            <p>Healthcare as service, not privilege. We treat every patient with empathy and kindness.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h3>Accessibility</h3>
+                            <p>Easy reach for underserved populations. Quality healthcare should reach everyone.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3>Trust & Expertise</h3>
+                            <p>Led by a female doctor with specializations in diabetology, obstetrics, gynecology, and general medicine.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-clinic-medical"></i>
+                            </div>
+                            <h3>Modern Care</h3>
+                            <p>Multi-department facility with visiting specialists and comprehensive healthcare services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="vision-mission section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Vision & Mission</h2>
+                <p>Guiding principles that drive our commitment to exceptional healthcare</p>
+            </div>
+            
+            <div class="vm-container">
+                <div class="vm-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="vm-content">
+                    <h3>Our Vision & Mission</h3>
+                    
+                    <div class="vm-section">
+                        <h4>Vision</h4>
+                        <p>To deliver uncompromised, expert healthcare to all, grounded in compassion and guided by the best of modern medical excellence.</p>
+                    </div>
+                    
+                    <div class="vm-section">
+                        <h4>Mission</h4>
+                        <p>To provide accessible, high-quality healthcare to every patient who walks through our doors, treating each individual with dignity, empathy, and respect.</p>
+                        <p>We are committed to:</p>
+                        <ul>
+                            <li>Delivering evidence-based medical care that meets the highest standards of clinical excellence</li>
+                            <li>Fostering genuine human connections through compassionate listening and personalized attention</li>
+                            <li>Creating a healing environment where patients feel heard, valued, and empowered in their health journey</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="vm-section">
+                        <p><strong>We believe that exceptional healthcare is both a science and an art—combining medical expertise with genuine care for the whole person. Every patient deserves our best, and we pledge to deliver nothing less.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="facilities section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Facilities</h2>
+                <p>We offer comprehensive healthcare services to meet all your medical needs under one roof.</p>
+            </div>
+            
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>General Medicine</h3>
+                    <p>Comprehensive primary care for all ages, from routine check-ups to chronic disease management.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Diabetology</h3>
+                    <p>Specialized care for diabetes management, including monitoring, education, and complication screening.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Women's Health</h3>
+                    <p>Complete OB/GYN services, prenatal care, family planning, and menopause management.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-allergies"></i>
+                    </div>
+                    <h3>Dermatology</h3>
+                    <p>Diagnosis and treatment of skin conditions, allergies, and minor dermatological procedures.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Pharmacy</h3>
+                    <p>Full-service in-house pharmacy with medication counseling and prescription management.</p>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3>Diagnostic Lab</h3>
+                    <p>On-site laboratory for quick and reliable blood tests, urine analysis, and other diagnostics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Medical Team</h2>
+                <p>Meet our experienced healthcare professionals dedicated to your well-being.</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <div class="doctor-card">
+                    <div class="doctor-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Meena</h3>
+                    <div class="doctor-specialty">Founder & Chief Consultant Physician</div>
+                    <p class="doctor-bio">With over 15 years of medical experience, Dr. Meena specializes in Diabetology, Obstetrics & Gynecology, and General Medicine. Known for her compassionate care and diagnostic expertise.</p>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Arjun</h3>
+                    <div class="doctor-specialty">Consultant Dermatologist</div>
+                    <p class="doctor-bio">MD in Dermatology with over 10 years of experience treating various skin and hair conditions. Known for his gentle approach and attention to detail.</p>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Visiting Specialists</h3>
+                    <div class="doctor-specialty">Multiple Specialties</div>
+                    <p class="doctor-bio">Our network includes pediatricians, cardiologists, orthopedic surgeons, ENT specialists, ophthalmologists, and dietitians available at scheduled times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blogs Section - UPDATED 2025 DATES -->
+    <section id="blogs" class="blogs section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Health Blogs</h2>
+                <p>Stay informed with our latest health tips, medical insights, and wellness advice.</p>
+            </div>
+            
+            <div class="blogs-grid">
+                <div class="blog-card">
+                    <div class="blog-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="blog-date">January 15, 2025</div>
+                    <h3>Understanding Diabetes: Prevention and Management</h3>
+                    <p>Learn about the different types of diabetes, risk factors, and effective management strategies for a healthier life.</p>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;">Read More</a>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="blog-date">February 28, 2025</div>
+                    <h3>Women's Health: Essential Screenings at Every Age</h3>
+                    <p>Discover the important health screenings and check-ups women should consider throughout different stages of life.</p>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;">Read More</a>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-icon">
+                        <i class="fas fa-allergies"></i>
+                    </div>
+                    <div class="blog-date">March 12, 2025</div>
+                    <h3>Healthy Skin: Tips for All Seasons</h3>
+                    <p>Expert advice on maintaining healthy skin through changing weather conditions and addressing common dermatological concerns.</p>
+                    <a href="#" class="btn btn-primary" style="margin-top:1rem;">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Patient Testimonials</h2>
+                <p>Hear from our patients about their experiences at Lotus Polyclinic.</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        I have been living with diabetes for 10 years, and the care I receive at Lotus Polyclinic has truly transformed my health. Dr. Meena guided me on managing my diet and medications so well that my sugar levels are finally under control. She always listens patiently and encourages me. The entire staff is supportive.
+                    </div>
+                    <div class="testimonial-author">Sanjay K., 58</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - BOOK APPOINTMENT -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Schedule your visit with us for comprehensive healthcare services.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Our Location</h3>
+                            <p>Lotus Polyclinic, Ponmar, Chennai, Tamil Nadu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone Number</h3>
+                            <p>0820-1234567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Address</h3>
+                            <p>contact@lotuspolyclinic.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Working Hours</h3>
+                            <p>Monday to Sunday: 7:00 AM - 7:30 PM</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Section -->
+                    <div class="map-container">
+                        <h3>Find Us</h3>
+                        <div class="map-placeholder">
+                            <div class="map-content">
+                                <i class="fas fa-map-marker-alt" style="font-size: 2.5rem; color: var(--gentle-pink); margin-bottom: 0.8rem;"></i>
+                                <p>Lotus Polyclinic</p>
+                                <p>Ponmar, Chennai, Tamil Nadu</p>
+                                <a href="https://www.google.com/maps/place/Ponmar,+Tamil+Nadu/@12.9231466,80.0654321,15z/data=!3m1!4b1!4m6!3m5!1s0x3a525d5efc0b5b3f:0x7a1e8b0d4d5d5d5d!8m2!3d12.9231466!4d80.0654321!16s%2Fg%2F1tg9v8v3?entry=ttu" 
+                                   target="_blank" class="btn btn-primary" style="margin-top: 0.8rem; padding: 10px 20px; font-size: 0.9rem;">
+                                    <i class="fas fa-directions"></i> Get Directions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>BOOK YOUR APPOINTMENT</h3>
+                    <form id="appointment-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">FULL NAME:</label>
+                                <input type="text" id="name" class="form-control" placeholder="Your Full Name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">EMAIL ADDRESS:</label>
+                                <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">MOBILE NUMBER:</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="preferred-date">PREFERRED DATE:</label>
+                                <input type="date" id="preferred-date" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="preferred-time">PREFERRED TIME:</label>
+                                <select id="preferred-time" class="form-control" required>
+                                    <option value="">Select Time</option>
+                                    <option value="morning">Morning (7:00 AM - 12:00 PM)</option>
+                                    <option value="afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                                    <option value="evening">Evening (4:00 PM - 7:30 PM)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="doctor">PREFERRED DOCTOR:</label>
+                                <select id="doctor" class="form-control">
+                                    <option value="">Any Available Doctor</option>
+                                    <option value="dr-meena">Dr. Meena (Diabetes & General Medicine)</option>
+                                    <option value="dr-arjun">Dr. Arjun (Dermatology)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reason">REASON FOR VISIT:</label>
+                            <textarea id="reason" class="form-control" placeholder="Briefly describe your health concern or reason for appointment..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">BOOK APPOINTMENT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Us Section -->
+    <section id="message-us" class="message-us section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Message Us</h2>
+                <p>Have questions or need more information? Send us a message and we'll get back to you soon.</p>
+            </div>
+            
+            <div class="message-form-container">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--deep-blue);">SEND US A MESSAGE</h3>
+                
+                <form id="message-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="message-name">NAME:</label>
+                            <input type="text" id="message-name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message-email">MAIL ID:</label>
+                            <input type="email" id="message-email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="message-phone">MOBILE NO:</label>
+                            <input type="tel" id="message-phone" class="form-control" placeholder="Your Phone Number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message-subject">SUBJECT:</label>
+                            <input type="text" id="message-subject" class="form-control" placeholder="Subject of your message" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message-content">YOUR MESSAGE:</label>
+                        <textarea id="message-content" class="form-control" placeholder="Your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer - WITH LOGO -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo-col">
+                    <img src="images/favicon.ico" alt="Lotus Polyclinic Logo" class="footer-logo">
+                    <p>Compassionate healthcare that remains affordable and accessible to every person in the community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#facilities">Facilities</a></li>
+                        <li><a href="#blogs">Blogs</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Book Appointment</a></li>
+                        <li><a href="#message-us">Message Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#facilities">Diabetology</a></li>
+                        <li><a href="#facilities">Women's Health</a></li>
+                        <li><a href="#facilities">Dermatology</a></li>
+                        <li><a href="#facilities">General Medicine</a></li>
+                        <li><a href="#facilities">Diagnostic Lab</a></li>
+                        <li><a href="#facilities">Pharmacy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Ponmar, Chennai, Tamil Nadu</li>
+                        <li><i class="fas fa-phone"></i> 0820-1234567</li>
+                        <li><i class="fas fa-envelope"></i> contact@lotuspolyclinic.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sun: 7:00 AM - 7:30 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lotus Polyclinic. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918201234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Appointment Modal -->
+    <div class="modal" id="appointmentModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Appointment Requested</h3>
+            <p>Thank you for your appointment request! We will contact you shortly to confirm.</p>
+            <button class="btn btn-primary" style="margin-top: 1rem; width: 100%;" id="modalCloseBtn">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Form submissions
+        document.addEventListener('DOMContentLoaded', function() {
+            const appointmentForm = document.getElementById('appointment-form');
+            const messageForm = document.getElementById('message-form');
+            const feedbackForm = document.getElementById('feedback-form');
+            const appointmentModal = document.getElementById('appointmentModal');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const closeModal = document.querySelector('.close-modal');
+            
+            // Appointment form
+            if (appointmentForm) {
+                appointmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span class="loading"></span> Processing...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.reset();
+                        appointmentModal.style.display = 'flex';
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
+                });
+            }
+            
+            // Message form
+            if (messageForm) {
+                messageForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span class="loading"></span> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.reset();
+                        alert('Thank you for your message! We will get back to you soon.');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
+                });
+            }
+            
+            // Feedback form
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.reset();
+                        alert('Thank you for your valuable feedback!');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
+                });
+            }
+            
+            // Modal close functionality
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => appointmentModal.style.display = 'none');
+            if (closeModal) closeModal.addEventListener('click', () => appointmentModal.style.display = 'none');
+            window.addEventListener('click', (e) => { if (e.target === appointmentModal) appointmentModal.style.display = 'none'; });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                        mobileMenu.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Mobile menu
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+            if (mobileMenuClose) mobileMenuClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+            
+            // Active nav link
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop - 100) current = section.getAttribute('id');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
